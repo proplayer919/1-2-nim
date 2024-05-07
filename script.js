@@ -24,6 +24,8 @@ function makeMove(move) {
         updateCounterDisplay();
         if (counters === 0) {
             displayResult("You Win!");
+        } else if (counters === 3) {
+            displayResult("3-counter Rule: You Win!<sup><i style=\"text-decoration: underline\" title=\"3-counter Rule: Your opponent cannot win because regardless whether they take 1 or 2 counters, you can win.\">i</i></sup>");
         } else {
             userTurn = false;
             computerMove();
@@ -73,6 +75,8 @@ function computerMove() {
     updateCounterDisplay();
     if (counters === 0) {
         displayResult("Computer Wins!");
+    } else if (counters === 3) {
+        displayResult("3-counter Rule: Computer Wins!<sup><i style=\"text-decoration: underline\" title=\"3-counter Rule: You cannot win because regardless whether they take 1 or 2 counters, you can win.\">i</i></sup>");
     } else {
         userTurn = true;
     }
@@ -83,7 +87,7 @@ function updateCounterDisplay() {
 }
 
 function displayResult(message) {
-    document.getElementById("resultMsg").innerText = message;
+    document.getElementById("resultMsg").innerHTML = message;
 }
 
 document.getElementById("userFirstBtn").addEventListener("click", setUserFirst);
