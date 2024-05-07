@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>1-2 Nim Game</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>1-2 Nim Game</h1>
+            <p>Instructions: There are 10 counters. Take 1 or 2 counters. The player who takes the last counter(s) wins.
+            </p>
+            <div class="options">
+                <label>Hard Mode</label>
+                <input type="checkbox" id="hardMode">
+                <button id="userFirstBtn">User First</button>
+                <button id="computerFirstBtn">Computer First</button>
+            </div>
+            <div id="gameContainer" class="game-container">
+                <div class="counter-container">
+                    <h2>Counters:</h2>
+                    <div id="counterDisplay" class="counter-display">10</div>
+                </div>
+                <div class="move-container">
+                    <h2>Your Move:</h2>
+                    <button class="btn" onclick="makeMove(1)">Take 1</button>
+                    <button class="btn" onclick="makeMove(2)">Take 2</button>
+                </div>
+            </div>
+            <p id="resultMsg" class="result-msg"></p>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+
+</html>
