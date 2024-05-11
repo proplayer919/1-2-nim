@@ -23,9 +23,9 @@ function makeMove(move) {
         counters -= move;
         updateCounterDisplay();
         if (counters === 0) {
-            displayResult("You Win!");
-        } else if (counters === 3) {
-            displayResult("3-counter Rule: You Win!<sup><i style=\"text-decoration: underline\" title=\"3-counter Rule: Your opponent cannot win because regardless whether they take 1 or 2 counters, you can win.\">i</i></sup>");
+            displayResult("You Win!<button class=\"btn\" onclick=\"newGame()\">Play Again</button>");
+        } else if (counters === 3 && document.getElementById('hardMode').checked == true) {
+            displayResult("3-counter Rule: You Win!<sup><i style=\"text-decoration: underline\" title=\"3-counter Rule: Your opponent cannot win because regardless whether they take 1 or 2 counters, you can win.\">i</i></sup><button class=\"btn\" onclick=\"newGame()\">Play Again</button>");
         } else {
             userTurn = false;
             computerMove();
@@ -74,9 +74,9 @@ function computerMove() {
     counters -= move;
     updateCounterDisplay();
     if (counters === 0) {
-        displayResult("Computer Wins!");
-    } else if (counters === 3) {
-        displayResult("3-counter Rule: Computer Wins!<sup><i style=\"text-decoration: underline\" title=\"3-counter Rule: You cannot win because regardless whether they take 1 or 2 counters, you can win.\">i</i></sup>");
+        displayResult("Computer Wins!<button class=\"btn\" onclick=\"newGame()\">Play Again</button>");
+    } else if (counters === 3 && document.getElementById('hardMode').checked == true) {
+        displayResult("3-counter Rule: Computer Wins!<sup><i style=\"text-decoration: underline\" title=\"3-counter Rule: You cannot win because regardless whether they take 1 or 2 counters, you can win.\">i</i></sup><button class=\"btn\" onclick=\"newGame()\">Play Again</button>");
     } else {
         userTurn = true;
     }
@@ -88,6 +88,16 @@ function updateCounterDisplay() {
 
 function displayResult(message) {
     document.getElementById("resultMsg").innerHTML = message;
+}
+
+function newGame() {
+    counters = 10;
+    userTurn = false;
+    document.getElementById("userFirstBtn").disabled = false;
+    document.getElementById("computerFirstBtn").disabled = false;
+    document.getElementById('hardMode').disabled = false;
+    document.getElementById("resultMsg").innerText = "";
+    updateCounterDisplay();
 }
 
 document.getElementById("userFirstBtn").addEventListener("click", setUserFirst);
